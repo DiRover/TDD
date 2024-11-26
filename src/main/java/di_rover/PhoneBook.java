@@ -2,11 +2,12 @@ package di_rover;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class PhoneBook {
 
     public HashMap<Integer, String> numbers = new HashMap<Integer, String>();
-    private Map<String, Integer> reverseMap = new HashMap<>();
+    private Map<String, Integer> reverseMap = new TreeMap<>();
 
     public int add(int number, String name) {
 
@@ -24,5 +25,12 @@ public class PhoneBook {
 
     public Integer findByName(String name) {
         return reverseMap.get(name);
+    }
+
+    public void printAllNames() {
+
+        for (String value : reverseMap.keySet()) {
+            System.out.println(value);
+        }
     }
 }
