@@ -1,7 +1,5 @@
 import di_rover.PhoneBook;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -13,31 +11,22 @@ import static org.hamcrest.Matchers.is;
 
 public class PhoneBookTest {
 
-    PhoneBook phoneBook;
-
-    @BeforeEach
-    public void setPhoneBook() {
-        phoneBook = new PhoneBook();
-    }
-
-    @AfterEach
-    public void tearDown() {
-        phoneBook = null;
-    }
-
+    static PhoneBook phoneBook = new PhoneBook();;
 
     public static Stream<Arguments> testAdd() {
         return Stream.of(
-                Arguments.of(4, 4),
-                Arguments.of(16, 16),
-                Arguments.of(32, 34)
+                Arguments.of(4, "John", 1),
+                Arguments.of(16, "Carl", 2),
+                Arguments.of(32, "Stiven", 3),
+                Arguments.of(2, "Alan", 4),
+                Arguments.of(322, "Alan", 4)
         );
     }
 
     @MethodSource
     @ParameterizedTest
-    public void testAdd(int a, int expected) {
-        int result = phoneBook.add(a);
+    public void testAdd(int number, String name, int expected) {
+        int result = phoneBook.add(number, name);
 
 
         Assertions.assertEquals(expected, result);
@@ -45,5 +34,4 @@ public class PhoneBookTest {
         assertThat(expected, is(result)); //hamcrest
 
     }
-
 }
