@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class PhoneBook {
 
-    HashMap<Integer, String> numbers = new HashMap<Integer, String>();
+    public HashMap<Integer, String> numbers = new HashMap<Integer, String>();
 
     public int add(int number, String name) {
 
@@ -16,6 +16,6 @@ public class PhoneBook {
     }
 
     public String findByNumber(int number) {
-        return null;
+        return numbers.get(number);
     }
 }
