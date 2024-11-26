@@ -28,10 +28,29 @@ public class PhoneBookTest {
     public void testAdd(int number, String name, int expected) {
         int result = phoneBook.add(number, name);
 
+        Assertions.assertEquals(expected, result);
+
+        assertThat(expected, is(result)); //hamcrest
+    }
+
+    public static Stream<Arguments> testFindByNumber() {
+        return Stream.of(
+                Arguments.of(4, "John"),
+                Arguments.of(16, "Carl"),
+                Arguments.of(32, "Stiven"),
+                Arguments.of(2, "Alan")
+        );
+    };
+
+    @MethodSource
+    @ParameterizedTest
+    public void testFindByNumber(int number, String expected) {
+        String result = phoneBook.findByNumber(number);
 
         Assertions.assertEquals(expected, result);
 
         assertThat(expected, is(result)); //hamcrest
-
     }
+
+
 }
