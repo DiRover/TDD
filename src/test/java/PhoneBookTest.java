@@ -43,11 +43,22 @@ public class PhoneBookTest {
 
     @Test
     public void testFindByNumber() {
-        String expected = "John";
-        phoneBook.add(4, expected);
-        String result = phoneBook.findByNumber(4);
+        String name = "John";
+        int number = 4;
+        phoneBook.add(number, name);
+        String result = phoneBook.findByNumber(number);
 
-        assertThat(expected, is(result));
+        assertThat(name, is(result));
+    }
+
+    @Test
+    public void testFindByName() {
+        String name = "John";
+        int number = 4;
+        phoneBook.add(number, name);
+        int result = phoneBook.findByName(name);
+
+        assertThat(number, is(result));
     }
 
 }
